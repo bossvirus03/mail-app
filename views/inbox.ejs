@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hộp thư đến</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+  <body>
+    <h2 class="inbox-page_title">Hộp thư đến</h2>
+    <div class="inbox-page_action">
+      <a href="/compose">Soạn email</a>
+      <a href="/logout">Đăng xuất</a>
+    </div>
+    <table class="inbox-page-table">
+      <tr>
+        <th>Người gửi</th>
+        <th>Chủ đề</th>
+        <th>Ngày nhận</th>
+        <th>Xóa</th>
+      </tr>
+      <% emails.forEach(email => { %>
+      <tr>
+        <td><%= email.sender %></td>
+        <td><a href="/email/<%= email.id %>"><%= email.subject %></a></td>
+        <td><%= email.created_at %></td>
+        <td>
+          <button
+            style="
+              width: 100%;
+              padding: 0.25rem;
+              background-color: red;
+              color: white;
+              font-size: 1rem;
+              font-weight: bold;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              transition: background-color 0.3s ease;
+            "
+            onclick="deleteEmail(<%= email.id %>)"
+          >
+            Xóa
+          </button>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+    <script>
+      function deleteEmail(emailId) {
+        fetch(`/email/${emailId}`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ emailId }),
+        }).then((response) => {
+          if (response.ok) location.reload();
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./stylesheets/style.css" />
+    <title>Soạn Email</title>
+  </head>
+  <body>
+    <div class="compose-page">
+      <div class="compose-page_container">
+        <h2 class="compose-page_title">Soạn Email</h2>
+        <% if (message) { %>
+        <p class="compose-page_message"><%= message %></p>
+        <% } %>
+        <form action="/compose" method="POST">
+          <label
+            style="
+              display: block;
+              margin-bottom: 0.5rem;
+              font-weight: bold;
+              color: #333;
+            "
+            >Người nhận:</label
+          >
+          <select name="receiverId" required>
+            <% users.forEach(user => { %>
+            <option value="<%= user.id %>"><%= user.email %></option>
+            <% }) %>
+          </select>
+          <label
+            style="
+              display: block;
+              margin-bottom: 0.5rem;
+              font-weight: bold;
+              color: #333;
+            "
+            >Chủ đề:</label
+          >
+          <input type="text" name="subject" required />
+          <label
+            style="
+              display: block;
+              margin-bottom: 0.5rem;
+              font-weight: bold;
+              color: #333;
+            "
+            >Nội dung:</label
+          >
+          <textarea name="body" required></textarea>
+          <button type="submit">Gửi</button>
+        </form>
+        <p><a href="/inbox">Quay lại Hộp thư đến</a></p>
+      </div>
+    </div>
+  </body>
+</html>

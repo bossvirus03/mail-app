@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chi tiết Email</title>
+  </head>
+  <body>
+    <h2>Chi tiết Email</h2>
+    <p><strong>Người gửi:</strong> <%= email.senderName %></p>
+    <p><strong>Người nhận:</strong> <%= email.receiver %></p>
+    <p><strong>Chủ đề:</strong> <%= email.subject %></p>
+    <p><strong>Nội dung:</strong></p>
+    <p><%= email.body %></p>
+
+    <% if (email.attachment) { %>
+    <p>
+      <strong>Đính kèm:</strong> <a href="<%= email.attachment %>">Tải xuống</a>
+    </p>
+    <% } %>
+
+    <a href="/inbox">Quay lại Hộp thư đến</a>
+  </body>
+</html>

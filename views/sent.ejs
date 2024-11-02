@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <title>Hộp thư đi</title>
+  </head>
+  <body>
+    <div class="sent-page">
+      <h2 class="sent-page_title">Hộp thư đi</h2>
+      <div class="sent-page_action">
+        <a href="/compose">Soạn email</a>
+        <a href="/logout">Đăng xuất</a>
+      </div>
+      <div style="display: flex; justify-content: center">
+        <table class="sent-page-table">
+          <tr>
+            <th>Người nhận</th>
+            <th>Chủ đề</th>
+            <th>Ngày gửi</th>
+          </tr>
+          <% emails.forEach(email => { %>
+          <tr>
+            <td><%= email.receiver %></td>
+            <td><a href="/email/<%= email.id %>"><%= email.subject %></a></td>
+            <td><%= email.created_at %></td>
+          </tr>
+          <% }) %>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
