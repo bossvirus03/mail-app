@@ -38,7 +38,6 @@ const authController = {
   },
   postRegister: (req, res) => {
     const { fullname, email, password, confirmPassword } = req.body;
-    console.log(fullname, email, password, confirmPassword);
 
     if (!fullname || !email || !password || !confirmPassword) {
       return res.render("register", {
@@ -79,9 +78,7 @@ const authController = {
   },
 
   logout: (req, res) => {
-    console.log("hrererere");
     res.clearCookie("isAuth");
-
     res.redirect("/login");
   },
 };
