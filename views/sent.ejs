@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="stylesheets/style.css" />
-    <title>Hộp thư đi</title>
+    <title>Outbox</title>
   </head>
   <body>
     <div class="sent-page">
-      <h2 class="sent-page_title">Hộp thư đi</h2>
+      <h2 class="sent-page_title">Outbox</h2>
       <div class="sent-page_action">
-        <a href="/compose">Soạn email</a>
-        <a href="/logout">Đăng xuất</a>
+        <a href="/compose">Compose Email</a>
+        <a href="/logout">Log out</a>
       </div>
       <div style="display: flex; justify-content: center">
         <table class="sent-page-table">
           <tr>
-            <th>Người nhận</th>
-            <th>Chủ đề</th>
-            <th>Ngày gửi</th>
+            <th>Receiver</th>
+            <th>Topic</th>
+            <th>Date sent</th>
           </tr>
           <% emails.forEach(email => { %>
           <tr>

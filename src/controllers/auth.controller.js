@@ -17,8 +17,10 @@ const authController = {
       [email, password],
       (err, results) => {
         if (err) {
-          console.error("Lỗi truy vấn cơ sở dữ liệu:", err);
-          return res.status(500).send("Đã xảy ra lỗi, vui lòng thử lại sau.");
+          console.error("Database query error:", err);
+          return res
+            .status(500)
+            .send("An error occurred, please try again later.");
         }
 
         if (results.length > 0) {
@@ -31,7 +33,7 @@ const authController = {
 
           res.redirect("/inbox");
         } else {
-          res.render("login", { message: "Email hoặc mật khẩu không đúng" });
+          res.render("login", { message: "Email or password is incorrect" });
         }
       }
     );
@@ -41,19 +43,19 @@ const authController = {
 
     if (!fullname || !email || !password || !confirmPassword) {
       return res.render("register", {
-        message: "Tất cả các trường đều bắt buộc",
+        message: "All fields are required",
       });
     }
 
     if (password.length < 6) {
       return res.render("register", {
-        message: "password cần ít nhất 6 kí tự",
+        message: "Password needs at least 6 characters",
       });
     }
 
     if (password !== confirmPassword) {
       return res.render("register", {
-        message: "Mật khẩu nhập lại không khớp!",
+        message: "Re-entered password does not match!",
       });
     }
 
@@ -61,7 +63,7 @@ const authController = {
       if (err) return res.status(500).send("Database error");
 
       if (results.length > 0) {
-        return res.render("register", { message: "Email đã tồn tại!" });
+        return res.render("register", { message: "Email already exists!" });
       }
 
       db.query(
@@ -70,7 +72,7 @@ const authController = {
         (err) => {
           if (err) return res.status(500).send("Database error");
           res.render("login", {
-            message: "Đăng kí thành công! Vui lòng đăng nhập",
+            message: "Registered successfully! Please log in",
           });
         }
       );

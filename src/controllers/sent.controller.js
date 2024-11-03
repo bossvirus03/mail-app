@@ -13,9 +13,9 @@ const sentController = {
       [userId],
       (err, results) => {
         if (err) {
-          console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err);
+          console.error("Error when querying the database:", err);
           return res.render("error", {
-            message: "Đã xảy ra lỗi, vui lòng thử lại sau.",
+            message: "An error occurred, please try again later.",
           });
         }
 

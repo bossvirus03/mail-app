@@ -12,9 +12,9 @@ const composeController = {
       [userId],
       (err, results) => {
         if (err) {
-          console.error("Lỗi khi truy vấn cơ sở dữ liệu:", err);
+          console.error("Error when querying the database:", err);
           return res.render("error", {
-            message: "Đã xảy ra lỗi, vui lòng thử lại sau.",
+            message: "An error occurred, please try again later.",
           });
         }
 
@@ -39,7 +39,7 @@ const composeController = {
           console.error("Lỗi khi gửi email:", err);
           return res.render("compose", {
             users: [],
-            message: "Đã xảy ra lỗi, vui lòng thử lại.",
+            message: "An error occurred, please try again later.",
           });
         }
 

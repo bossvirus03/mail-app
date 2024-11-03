@@ -6,14 +6,14 @@ const emailController = {
 
     db.query("DELETE FROM emails WHERE id = ?", [emailId], (err, results) => {
       if (err) {
-        return res.status(500).json({ message: "Lỗi truy vấn cơ sở dữ liệu" });
+        return res.status(500).json({ message: "Database query error" });
       }
 
       if (results.affectedRows === 0) {
-        return res.status(404).json({ message: "Email không tồn tại" });
+        return res.status(404).json({ message: "Email does not exist" });
       }
 
-      res.json({ message: "Email đã được xóa thành công" });
+      res.json({ message: "The email has been successfully deleted" });
     });
   },
   getEmailDetail: (req, res) => {
@@ -26,11 +26,11 @@ const emailController = {
 
     db.query(query, [emailId], (err, results) => {
       if (err) {
-        return res.status(500).send("Lỗi truy vấn cơ sở dữ liệu");
+        return res.status(500).send("Database query error");
       }
 
       if (results.length === 0) {
-        return res.status(404).send("Email không tồn tại");
+        return res.status(404).send("Email does not exist");
       }
 
       const email = results[0];

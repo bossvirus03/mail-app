@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Đăng nhập</title>
+    <title>Login</title>
     <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
   <body>
@@ -10,9 +10,7 @@
       class="login-page"
       style="display: flex; flex-direction: column; gap: 23px"
     >
-      <h1 style="font-size: 53x; text-align: center">
-        Hệ thống email dựa trên web
-      </h1>
+      <h1 style="font-size: 53x; text-align: center">Web-based email system</h1>
       <div class="login-page_container">
         <h2 style="margin-bottom: 50px; text-align: center">Đăng nhập</h2>
         <% if (message) { %>
@@ -22,12 +20,12 @@
           <label>Email:</label>
           <input type="email" name="email" required />
           <br />
-          <label>Mật khẩu:</label>
+          <label>Password:</label>
           <input type="password" name="password" required />
           <br />
-          <button type="submit">Đăng nhập</button>
+          <button type="submit">Signin</button>
         </form>
-        <p>Chưa có tài khoản? <a href="/register">Đăng ký</a></p>
+        <p>don't have an account? <a href="/register">Signup</a></p>
       </div>
     </div>
   </body>
