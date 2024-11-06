@@ -5,28 +5,100 @@
     <link rel="stylesheet" href="stylesheets/style.css" />
     <title>Outbox</title>
   </head>
+  <body></body>
+</html>
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <link rel="stylesheet" href="./stylesheets/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compose Email</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      .header {
+        color: #fff;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .content {
+        display: flex;
+        flex: 1;
+      }
+      .sider {
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        background-color: #95dcfd;
+        padding: 20px;
+      }
+      .main {
+        flex: 1;
+        padding: 20px;
+      }
+    </style>
+  </head>
   <body>
-    <div class="sent-page">
-      <h2 class="sent-page_title">Outbox</h2>
-      <div class="sent-page_action">
-        <a href="/compose">Compose Email</a>
-        <a href="/logout">Log out</a>
+    <div class="container">
+      <div class="header">
+        <div class="inbox-page_action">
+          <a href="/compose">Compose Email</a>
+          <a href="/logout">Đăng xuất</a>
+        </div>
       </div>
-      <div style="display: flex; justify-content: center">
-        <table class="sent-page-table">
-          <tr>
-            <th>Receiver</th>
-            <th>Topic</th>
-            <th>Date sent</th>
-          </tr>
-          <% emails.forEach(email => { %>
-          <tr>
-            <td><%= email.receiver %></td>
-            <td><a href="/email/<%= email.id %>"><%= email.subject %></a></td>
-            <td><%= email.created_at %></td>
-          </tr>
-          <% }) %>
-        </table>
+      <div class="content">
+        <div class="sider">
+          <div
+            style="margin-top: 20px; background-color: #82d6fd; padding: 10px"
+          >
+            <h2>Sider</h2>
+            <ul>
+              <li><a style="display: inline" href="/compose">compose</a></li>
+              <li><a style="display: inline" href="/inbox">inbox</a></li>
+              <li><a style="display: inline" href="/sent">outbox</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="main">
+          <div class="sent-page">
+            <h2 class="sent-page_title">Outbox</h2>
+            <div class="sent-page_action">
+              <a href="/compose">Compose Email</a>
+              <a href="/logout">Log out</a>
+            </div>
+            <div style="display: flex; justify-content: center">
+              <table class="sent-page-table">
+                <tr>
+                  <th>Receiver</th>
+                  <th>Topic</th>
+                  <th>Date sent</th>
+                </tr>
+                <% emails.forEach(email => { %>
+                <tr>
+                  <td><%= email.receiver %></td>
+                  <td>
+                    <a href="/email/<%= email.id %>"><%= email.subject %></a>
+                  </td>
+                  <td><%= email.created_at %></td>
+                </tr>
+                <% }) %>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

@@ -11,6 +11,7 @@ var inboxRouter = require("./routes/inbox");
 var composeRouter = require("./routes/compose");
 var sentRouter = require("./routes/sent.js");
 var emailRouter = require("./routes/emails.js");
+var forbiddenRouter = require("./routes/forbidden.js");
 var registerRouter = require("./routes/register.js");
 var app = express();
 
@@ -34,6 +35,7 @@ app.use("/compose", composeRouter);
 app.use("/sent", sentRouter);
 app.use("/email", emailRouter);
 app.use("/logout", logoutRouter);
+app.use("/forbidden", forbiddenRouter);
 
 app.use(function (err, req, res, next) {
   res.locals.message = err.message;
